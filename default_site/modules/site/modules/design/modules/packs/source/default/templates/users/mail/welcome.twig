@@ -1,0 +1,31 @@
+
+<p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">
+    {{ t(module('USERS'), 'Hello') }},
+</p>
+
+<p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">
+    {{ t(module('USERS'), 'Your account has been created') }}.
+
+    {% if module.enableGeneratingPassword %}
+        {{ t(module('USERS'), 'We have generated a password for you') }}:
+        <strong>{{ user.password }}</strong>
+    {% endif %}
+</p>
+
+{% if token is not empty %}
+    <p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">
+        {{ t(module('USERS'), 'In order to complete your registration, please click the link below') }}.
+    </p>
+
+    <p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">
+        {{ a(token.url, token.url)|raw }}
+    </p>
+
+    <p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">
+        {{ t(module('USERS'), 'If you cannot click the link, please try pasting the text into your browser') }}.
+    </p>
+{% endif %}
+
+<p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">
+    {{ t(module('USERS'), 'If you did not make this request you can ignore this email') }}.
+</p>

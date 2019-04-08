@@ -1,0 +1,16 @@
+
+{#
+    post.author             Author identity of this post
+    post.editor             Editor identity of this post
+    post.content            Content (text) of this post
+#}
+
+<div class="row">
+    <div class="col-sm-3">
+        {{ render('forum/post/_author', {'author' : post.author})|raw }}
+    </div>
+
+    <div class="col-sm-9">
+        {{ render('forum/post/_content', {'post' : post})|raw }}
+    </div>
+</div>

@@ -1,0 +1,62 @@
+
+{#
+    topic.title                 Topic title string
+    topic.slug                  Topic title converted into link-compatible uri part
+    topic.description           Topic description text
+    topic.views_num             Number of topic views
+    topic.posts_num             Number of posts created in this topic
+    topic.subforum              Parent subforum of this topic
+#}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-7">
+        <div class="row">
+            <div class="col-xs-12">
+                {{ a(topic.title, {
+                    0: route('SITE_FORUM_TOPICS_SHOW'),
+                    'section': topic.subforum.section.slug,
+                    'subforum': topic.subforum.slug,
+                    'topic': topic.slug
+                })|raw }}
+
+                {{ render('forum/topic/_pagination', {'topic': topic})|raw }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                {{ topic.description }}
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden-xs col-sm-2">
+        <div class="pull-right">
+            <div class="row">
+                <div class="col-xs-12 text-nowrap">
+                    <div class="pull-right">
+                        {{ t(module('FORUM'),
+                            '{views, plural, =0{No views} =1{1 view} other{# views}}',
+                            {'views': topic.views_num})
+                        }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 text-nowrap">
+                    <div class="pull-right">
+                        {{ t(module('FORUM'),
+                            '{posts, plural, =0{No posts} =1{1 post} other{# posts}}',
+                            {'posts': topic.posts_num})
+                        }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden-xs col-sm-4 col-md-3">
+        {{ render('forum/_last_post', {'post': topic.lastPost, 'title': topic.lastPost.shortContent})|raw }}
+    </div>
+</div>

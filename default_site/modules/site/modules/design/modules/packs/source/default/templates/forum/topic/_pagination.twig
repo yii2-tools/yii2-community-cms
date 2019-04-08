@@ -1,0 +1,16 @@
+
+{%- if topic.postsCount > topic.postsPerPage -%}
+    ({%- for page in 1..topic.lastPage -%}
+        {{- a(page, {
+            0: route('SITE_FORUM_TOPICS_SHOW'),
+            'section': topic.subforum.section.slug,
+            'subforum': topic.subforum.slug,
+            'topic': topic.slug,
+            'page': page,
+        })|raw -}}
+
+        {%- if loop.index != topic.lastPage -%}
+        ,
+        {% endif %}
+    {%- endfor -%})
+{%- endif -%}

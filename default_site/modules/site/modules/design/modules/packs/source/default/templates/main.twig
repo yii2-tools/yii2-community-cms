@@ -1,0 +1,68 @@
+{% spaceless %}
+
+{#
+    This is example how you can use styles and scripts from your design pack:
+
+    {{ style('foo/bar.css') }}
+    {{ script('foo/bar.js') }}
+
+    It works for any template of design pack (assets will be used on template rendering stage).
+    This files should be placed under 'styles' and 'scripts' directories of design pack accordingly.
+
+    If some error occurs during asset publishing - no messages will shown,
+    try to check your asset's path and file existence.
+#}
+
+{{ this.beginPage() }}
+<!DOCTYPE html>
+<html lang="{{ app.language }}">
+<head>
+    <meta charset="{{ app.charset }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-pjax-version" content="{{ app.version }}">
+    <title>{{ this.title }}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ image('favicon.ico') }}" />
+    {{ csrf()|raw }}
+    {{ this.head() }}
+</head>
+
+<body class="hold-transition skin-black {{ ADMIN_SIDEBAR_MINI }} {{ ADMIN_SIDEBAR_COLLAPSE }}">
+{{ this.beginBody() }}
+
+<div class="wrap">
+    {{ MENU|raw }}
+
+    {{ ADMIN_SIDEBAR|raw }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                {{ BREADCRUMBS|raw }}
+            </div>
+        </div>
+
+        {{ ALERTS|raw }}
+
+        {% if this.blocks['containers'] is not empty %}
+        <div class="row">
+            <div class="col-xs-3">
+                {{ this.blocks['containers']|raw }}
+            </div>
+
+            <div class="col-xs-9">
+                {{ content|raw }}
+            </div>
+        </div>
+        {% else %}
+            {{ content|raw }}
+        {% endif %}
+    </div>
+</div>
+
+</body>
+{{ this.endBody() }}
+
+</html>
+{{ this.endPage() }}
+
+{% endspaceless %}

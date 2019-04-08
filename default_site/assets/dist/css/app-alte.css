@@ -1,0 +1,159 @@
+
+.box-header > .box-title {
+    font-size: 16px;
+}
+
+.box-module .box-header > .box-tools {
+    position: initial;
+}
+
+li.dropdown {
+    cursor: pointer;
+}
+
+.navbar-header {
+    float: right;
+}
+
+.main-sidebar, .control-sidebar {
+    position: fixed;
+}
+
+.sidebar-mini.sidebar-collapse .main-header .navbar {
+    margin-left: initial;
+}
+
+.main-header > .navbar {
+    margin-left: initial;
+    border-bottom: 1px solid #eee;
+}
+
+.main-header > .navbar .logo:hover {
+    opacity: 0.5;
+}
+
+.main-header > .navbar .logo-mini .glyphicon {
+    top: 2px;
+}
+
+.main-header .menu-toggle {
+    float:left;
+    background-color:transparent;
+    background-image:none;
+    padding:15px 15px;
+    font-family:fontAwesome
+}
+
+.main-header .sidebar-toggle:before {
+    content:"\f0e4"
+}
+
+.skin-black .main-header .menu-toggle {
+    color: #333;
+    border-right: 1px solid #eee;
+}
+
+.main-header .navbar-toggle:hover {
+    background-color: initial;
+}
+
+.main-header .menu-toggle:hover {
+    opacity: 0.5;
+}
+
+.main-header .menu-toggle:before {
+    content:"\f0c9"
+}
+
+.main-header .menu-toggle:focus, .main-header .menu-toggle:active {
+    background:transparent
+}
+
+.main-header .menu-toggle .icon-bar {
+    display:none
+}
+
+.content-header {
+    height: 60px;
+    top: 50px;
+}
+
+.content-header > .breadcrumb {
+    position: initial;
+    float: none;
+    top: initial;
+    right: initial;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.content {
+    padding: 65px 15px 65px 15px;
+}
+
+.main-sidebar .user-panel canvas {
+    vertical-align: middle;
+}
+
+.main-header .logo-mini {
+    font-size: 0.65em !important;
+}
+
+.sidebar-mini.sidebar-collapse .main-footer {
+    margin-left: 0px !important;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header {
+    height: auto;
+}
+
+@media (max-width: 767px) {
+    .navbar-nav>.user-menu canvas.user-image {
+        vertical-align: bottom;
+        width: 20px;
+        height: 20px;
+    }
+    .main-header .logo {
+        width: 50px;
+        float: left;
+    }
+    .main-header .logo .logo-mini {
+        display: block;
+    }
+    .main-header .logo .logo-lg {
+        display: none;
+    }
+    .main-sidebar, .left-side, .control-sidebar {
+        padding-top: 50px;
+    }
+    .navbar-nav {
+        margin: 0px -15px;
+    }
+    .navbar-collapse {
+        border-top: none !important;
+    }
+    .navbar-collapse .nav li {
+        border-top: 1px solid #eee;
+    }
+}
+
+.navbar-collapse {
+    border-top: 1px solid #eee;
+}
+
+/* collapse */
+@media (max-width: 991px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    /* since 3.1.0 */
+    .navbar-collapse.collapse.in {
+        display: block!important;
+    }
+}

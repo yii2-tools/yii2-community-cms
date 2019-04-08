@@ -1,0 +1,16 @@
+
+{#
+    post.author             Author identity object for the post
+#}
+
+{{ set(this, 'title', t(module('FORUM'), 'Edit post')) }}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{ render('forum/post/_form', {'author': post.author})|raw }}
+            </div>
+        </div>
+    </div>
+</div>

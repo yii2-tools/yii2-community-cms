@@ -1,0 +1,55 @@
+
+.margin-top-5 {
+    margin-top: .5em !important;
+}
+
+.margin-top-10 {
+    margin-top: 1em !important;
+}
+
+.margin-top-15 {
+    margin-top: 1.5em !important;
+}
+
+.margin-top-20 {
+    margin-top: 2em !important;
+}
+
+.margin-bottom-5 {
+    margin-bottom: .5em !important;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 1em !important;
+}
+
+.margin-bottom-15 {
+    margin-bottom: 1.5em !important;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 2em !important;
+}
+
+.margin-left-5 {
+    margin-left: .5em !important;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.vertical-align-n-1 {
+    vertical-align: -1px !important;
+}
+
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+    border: none !important;
+}
+
+.anchor-top-100 {
+    display: block;
+    position: relative;
+    top: -100px;
+    visibility: hidden;
+}

@@ -1,0 +1,47 @@
+
+<div class="row">
+    {% if post is not empty %}
+    <div class="col-sm-3">
+        {% if post.author is not empty %}
+            <a href="{{ url({0: route('SITE_USERS_PROFILE_SHOW'), 'username': post.author.username}) }}" title="{{ post.author.profile.fullName }}">
+                {% if post.author.profile.image_url is not empty %}
+                <img src="{{ post.author.profile.image_url }}" class="img-circle last-post-author-image" />
+                {% else %}
+                <canvas width="40" height="40" data-jdenticon-hash="{{ md5(post.author.profile.fullName) }}" class="last-post-author-image"></canvas>
+                {% endif %}
+            </a>
+        {% else %}
+            {{ t(module('USERS'), 'Guest') }}
+        {% endif %}
+    </div>
+
+    <div class="col-sm-9">
+        <div class="row">
+            <div class="col-sm-12 text-nowrap">
+                <div class="pull-left">
+                    {{ a(title is not empty ? title : post.topic.shortTitle, {
+                        0: route('SITE_FORUM_TOPICS_SHOW'),
+                        'section': post.topic.subforum.section.slug,
+                        'subforum': post.topic.subforum.slug,
+                        'topic': post.topic.slug,
+                        'page': post.topic.lastPage,
+                        '#': post.id
+                    })|raw }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 text-nowrap">
+                <div class="pull-left">
+                    {{ post.shortDate }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-sm-12 text-center">
+        {{ t(module('FORUM'), 'No posts') }}
+    </div>
+    {% endif %}
+</div>

@@ -1,0 +1,63 @@
+
+{#
+    post.id                 Unique identifier of post
+    post.is_first           Indicate that post is a topic's message text
+    post.date               Post's formatted date & time of creation
+    post.content            Message text (html)
+#}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="pull-left">
+                    {{ post.date }}
+                </div>
+
+                {% if not post.is_first %}
+                <div class="pull-right">
+                    <div class="btn-group">
+                        {% if app.user.identity.isAdmin or app.user.can('FORUM_POSTS_UPDATE', {'entity' : post}) %}
+                        <a href="{{ url({0: route('SITE_FORUM_POSTS_UPDATE'), 'id': post.id}) }}" class="btn btn-default btn-xs">
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        {% endif %}
+
+                        {% if app.user.identity.isAdmin or app.user.can('FORUM_POSTS_DELETE', {'entity' : post}) %}
+                        <a href="{{ url({0: route('SITE_FORUM_POSTS_DELETE'), 'id': post.id}) }}" class="btn btn-default btn-xs" data-method="post" data-confirm="{{ t('app', 'Are you sure?') }}">
+                            <i class="fa fa-remove"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    <div class="btn-group margin-left-5">
+                        <a href="#{{ post.id }}">#{{ post.id }}</a>
+                        <a name="{{ post.id }}" class="anchor-top-100"></a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row margin-top-10">
+            <div class="col-sm-12">
+                {{ post.content|raw }}
+            </div>
+        </div>
+
+        {% if post.editor is not empty %}
+        <div class="row margin-top-10">
+            <div class="col-sm-12">
+                <div class="help-block">
+                    {{ t('app', 'Edited by {username} ({date})',
+                        {
+                            'username': a(post.editor.username, {0: route('SITE_USERS_PROFILE_SHOW'), 'username': post.editor.username}),
+                            'date': post.editDate
+                        })|raw
+                    }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>

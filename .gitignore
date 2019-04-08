@@ -1,0 +1,41 @@
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+Thumbs.db
+
+# Mac DS_Store Files
+.DS_Store
+
+# Composer files
+/default_site/vendor/*
+!/default_site/vendor/.gitkeep
+composer.lock
+
+# Codeception files
+/default_site/c3.php
+
+# phpunit itself is not needed
+phpunit.phar
+# local phpunit config
+/phpunit.xml
+
+# assets
+/default_site/web/assets/*
+!/default_site/web/assets/.gitkeep
+
+# runtime
+/default_site/runtime/*
+!/default_site/runtime/.gitkeep
+
+# env setup files
+/default_site/config/ENV_DEV
+/default_site/config/ENV_TEST

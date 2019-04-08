@@ -1,0 +1,92 @@
+
+{#
+    app.user                                User object for current user
+    app.user.can                            Method that checks user's permission to specified action
+    app.user.identity.isAdmin               Flag will be true if current user has admin access level
+    topic.title                             Title of topic
+    topic.description                       Description of topic
+    topic.posts                             Array of all posts that belongs to this topic
+#}
+
+{{ set(this, 'title', topic.title) }}
+
+<div class="row">
+    {% if topic is not empty %}
+    <div class="col-xs-12">
+        <div class="row margin-bottom-15">
+            <div class="col-xs-12">
+                {#  Uncomment if you want to show description of the topic
+
+                    <div class="pull-left">
+                        <div class="margin-top-5">
+                            <strong>{{ topic.description }}</strong>
+                        </div>
+                    </div>
+                #}
+
+                <div class="btn-group pull-right">
+                    {% if app.user.identity.isAdmin or app.user.can('FORUM_TOPICS_UPDATE', {'entity' : topic}) %}
+                    <a href="{{ url({0: route('SITE_FORUM_TOPICS_UPDATE'), 'id': topic.id}) }}" class="btn btn-warning">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    {% endif %}
+
+                    {% if app.user.identity.isAdmin or app.user.can('FORUM_TOPICS_DELETE', {'entity' : topic}) %}
+                    <a href="{{ url({0: route('SITE_FORUM_TOPICS_DELETE'), 'id': topic.id}) }}" class="btn btn-danger" data-method="post" data-confirm="{{ t('app', 'Are you sure?') }}">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                {{ PAGINATION|raw }}
+            </div>
+        </div>
+
+        <div class="row margin-top-10">
+            <div class="col-xs-12">
+                {% for post in topic.postsOnPage %}
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                {{ render('forum/post/_block', {'post' : post})|raw }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                {{ PAGINATION|raw }}
+            </div>
+        </div>
+
+        {% if app.user.identity.isAdmin or app.user.can('FORUM_POSTS_ADD') %}
+        <div class="row margin-top-10">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {{ render('forum/post/_form', {'author': app.user.identity})|raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{ t(module('FORUM'), "Topic doesn't exists or access has been denied") }}.
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>

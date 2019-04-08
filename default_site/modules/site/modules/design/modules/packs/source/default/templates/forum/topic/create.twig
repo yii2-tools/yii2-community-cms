@@ -1,0 +1,12 @@
+
+{{ set(this, 'title', t(module('FORUM'), 'Create topic')) }}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{ FORUM_TOPIC_FORM|raw }}
+            </div>
+        </div>
+    </div>
+</div>

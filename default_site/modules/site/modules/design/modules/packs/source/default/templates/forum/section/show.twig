@@ -1,0 +1,21 @@
+
+{#
+    section.title:          Title of forum section
+    section.subforums:      Array of subforum objects
+#}
+
+{{ set(this, 'title', section.title) }}
+
+{% if section is not empty %}
+    {{ render('forum/section/_block', {'section' : section})|raw }}
+{% else %}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{ t(module('FORUM'), "Section doesn't exists or access has been denied") }}.
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

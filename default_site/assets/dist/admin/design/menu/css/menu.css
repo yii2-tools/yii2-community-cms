@@ -1,0 +1,6 @@
+
+#menu-items-list.sortable.grid li {
+    min-width: 200px !important;
+    min-height: 60px !important;
+    text-align: left !important;
+}

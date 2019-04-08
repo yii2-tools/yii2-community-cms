@@ -1,0 +1,11 @@
+
+.navbar-nav.sortable.grid li.m-item {
+    margin: 0px !important;
+    padding: 0px !important;
+    min-height: 50px !important;
+    border: none;
+}
+
+.navbar-nav.sortable.grid li.sortable-placeholder {
+    min-height: 42px !important;
+}

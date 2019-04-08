@@ -1,0 +1,15 @@
+
+{#
+    content             Forum page content (section/subforum/topic etc.)
+    stats               Array of forum statistic data (count of users/topics/posts etc.)
+    online              Array of online users names
+#}
+
+<div class="row">
+    <div class="col-xs-12">
+        {{ content|raw }}
+
+        {{ render('forum/_stats', {'stats' : stats})|raw }}
+        {{ render('forum/_online', {'online' : online})|raw }}
+    </div>
+</div>

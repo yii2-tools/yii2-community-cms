@@ -1,0 +1,98 @@
+
+{#
+    subforum.title              Title of subforum
+    subforum.description        Description of subforum
+    subforum.topics             Array of all topics that belongs to this subforum
+    subforum.fixedTopics        Array of fixed (important) topics that belongs to this subforum
+    subforum.nonFixedTopics     Array of non-fixed topics that belongs to this subforum
+#}
+
+{{ set(this, 'title', subforum.title) }}
+
+<div class="row">
+    {% if subforum is not empty %}
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-solid box-default">
+                    <div class="box-header">
+                        <h3 class="box-title">{{ subforum.title }}</h3>
+
+                        <div class="box-tools pull-right">
+                            {% if app.user.identity.isAdmin or app.user.can('FORUM_TOPICS_ADD') %}
+                            <a class="btn btn-default" href="{{ url({0: route('SITE_FORUM_TOPICS_CREATE'), 'subforum_id': subforum.id}) }}" role="button">
+                                {{ t(module('FORUM'), 'New topic') }}
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+                        {{ subforum.description }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if (subforum.topicsOnPage is not empty or subforum.fixedTopics is not empty) %}
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                {{ PAGINATION|raw }}
+            </div>
+        </div>
+
+        <div class="row margin-top-10">
+            <div class="col-xs-12">
+                {% if subforum.fixedTopics is not empty %}
+                <div class="box box-danger with-border">
+                    <div class="box-body box-body-list">
+                        <ul class="list-group">
+                            {% for topic in subforum.fixedTopics %}
+                            <li class="list-group-item">
+                                {{ render('forum/topic/_block', {'topic' : topic})|raw }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if subforum.topicsOnPage is not empty %}
+                <div class="box box-default with-border">
+                    <div class="box-body box-body-list">
+                        <ul class="list-group">
+                            {% for topic in subforum.topicsOnPage %}
+                            <li class="list-group-item">
+                                {{ render('forum/topic/_block', {'topic' : topic})|raw }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                {{ PAGINATION|raw }}
+            </div>
+        </div>
+        {% else %}
+        <div class="box box-warning">
+            <div class="box-body">
+                {{ t(module('FORUM'), "No topics") }}.
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{ t(module('FORUM'), "Subforum doesn't exists or access has been denied") }}.
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>

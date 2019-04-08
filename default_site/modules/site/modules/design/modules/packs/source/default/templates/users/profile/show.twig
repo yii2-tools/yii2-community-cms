@@ -1,0 +1,39 @@
+
+{#
+    Available variables:
+
+    model:          User
+    model.profile:  User's profile
+#}
+
+{{ set(this, 'title', model.profile.fullName) }}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                {% if model.profile.image_url %}
+                <img src="{{ model.profile.image_url }}" alt="" class="img-rounded img-responsive" />
+                {% else %}
+                <canvas width="165" height="165" data-jdenticon-hash="{{ md5(model.profile.fullName) }}"></canvas>
+                {% endif %}
+            </div>
+
+            <div class="col-sm-6 col-md-8">
+                <h4>{{ this.title }}</h4>
+
+                <ul style="padding: 0; list-style: none outside none;">
+                    {% if model.profile.location is not empty %}
+                    <li><i class="glyphicon glyphicon-map-marker text-muted"></i> {{ model.profile.location }}</li>
+                    {% endif %}
+
+                    <li><i class="glyphicon glyphicon-time text-muted"></i> {{ t(module('USERS'), 'Joined on {0, date}', model.created_at) }}</li>
+                </ul>
+
+                {% if model.profile.bio is not empty %}
+                <p>{{ model.profile.bio }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

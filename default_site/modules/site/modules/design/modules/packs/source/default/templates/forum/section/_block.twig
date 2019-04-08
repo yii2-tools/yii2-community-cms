@@ -1,0 +1,31 @@
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-solid box-default">
+            <div class="box-header">
+                <h3 class="box-title">{{ section.title }}</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="box-body box-body-list">
+                <ul class="list-group">
+                    {% if section.subforums is not empty %}
+                        {% for subforum in section.subforums %}
+                            <li class="list-group-item">
+                                {{ render('forum/subforum/_block', {'subforum' : subforum})|raw }}
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li class="list-group-item">
+                            {{ t(module('FORUM'), 'No subforums') }}.
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

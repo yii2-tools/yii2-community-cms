@@ -1,0 +1,19 @@
+
+{{ t(module('USERS'), 'Hello') }},
+
+{{ t(module('USERS'), 'Your account has been created') }}.
+
+{% if module.enableGeneratingPassword %}
+    {{ t(module('USERS'), 'We have generated a password for you') }}:
+    {{ user.password }}
+{% endif %}
+
+{% if token is not empty %}
+    {{ t(module('USERS'), 'In order to complete your registration, please click the link below') }}.
+
+    {{ token.url }}
+
+    {{ t(module('USERS'), 'If you cannot click the link, please try pasting the text into your browser') }}.
+{% endif %}
+
+{{ t(module('USERS'), 'If you did not make this request you can ignore this email') }}.

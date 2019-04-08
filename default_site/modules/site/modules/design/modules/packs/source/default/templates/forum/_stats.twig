@@ -1,0 +1,87 @@
+
+<div class="row forum-stats margin-top-10 hidden-xs">
+    <div class="col-xs-3">
+        <div class="info-box">
+            <span class="info-box-icon bg-yellow">
+                <i class="fa fa-bullhorn"></i>
+            </span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">{{ t(module('FORUM'), 'Topics') }}</span>
+                <span class="info-box-number">{{ stats['topics'] }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-3">
+        <div class="info-box">
+            <span class="info-box-icon bg-purple">
+                <i class="fa fa-commenting"></i>
+            </span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">{{ t(module('FORUM'), 'Posts') }}</span>
+                <span class="info-box-number">{{ stats['posts'] }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-3">
+        <div class="info-box">
+            <span class="info-box-icon bg-aqua">
+                <i class="fa fa-group"></i>
+            </span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">{{ t(module('USERS'), 'Users') }}</span>
+                <span class="info-box-number">{{ stats['users'] }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-3">
+        <div class="info-box">
+            <span class="info-box-icon bg-green">
+                <i class="fa fa-user-plus"></i>
+            </span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">{{ t(module('FORUM'), 'New user') }}</span>
+                <span class="info-box-number">{{ stats['username'] }}</span>
+            </div>
+        </div>
+    </div>
+
+{#
+    Alternative statistics view.
+
+    <div class="col-xs-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">{{ t(module('FORUM'), 'Statistics') }}</h3>
+            </div>
+
+            <div class="box-body">
+                {{ t(module('FORUM'),
+                    '{users, plural, =0{No registered users} =1{One registered user} other{# registered users}}',
+                    {'users': stats['users']})
+                }}.
+
+                {{ t(module('FORUM'),
+                    '{topics, plural, =0{No topics} =1{One topic} other{# topics}}',
+                    {'topics': stats['topics']})
+                }}.
+
+                {{ t(module('FORUM'),
+                    '{posts, plural, =0{No posts} =1{One post} other{# posts}}',
+                    {'posts': stats['posts']})
+                }}.
+
+                {{ t(module('FORUM'), 'New user: {username}', {'username': stats['username']}) }}.
+            </div>
+        </div>
+    </div>
+
+#}
+
+</div>

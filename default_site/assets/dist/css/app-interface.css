@@ -1,0 +1,21 @@
+
+.grid-loading {
+    opacity: 0.7;
+    background: #ffffff url('../img/app/interface/loading.gif') center center no-repeat !important;
+}
+
+.grid-loading * {
+    background: transparent !important;
+}
+
+.grid-loading td {
+    border-color: #efefef !important;
+}
+
+.action-column {
+    color: #337ab7;
+}
+
+.sortable {
+    border: none !important;
+}

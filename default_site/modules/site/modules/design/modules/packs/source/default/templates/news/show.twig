@@ -1,0 +1,22 @@
+
+{{ set(this, 'title', newsRecord.title) }}
+
+<div class="row margin-bottom-15">
+    <div class="col-xs-12">
+        <div class="btn-group pull-right">
+            <a href="{{ url({0: route('SITE_NEWS')}) }}" class="btn btn-default">
+                {{ t(module('NEWS'), 'All news') }}
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{ render('news/_block', {'newsRecord' : newsRecord, 'active': true})|raw }}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+
+.box-body-list {
+    padding: 0px;
+}
+
+.box-body-list .list-group {
+    margin-bottom: 0px;
+}
+
+.box-body-list .list-group li {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.box-body-list .list-group li:last-child {
+    border-bottom: none;
+}
+
+.post-author-image {
+    max-width: 150px !important;
+    max-height: 150px !important;
+}
+
+.last-post-author-image {
+    max-height: 40px;
+}
+
+canvas.last-post-author-image {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}

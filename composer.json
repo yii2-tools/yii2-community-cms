@@ -1,0 +1,88 @@
+{
+    "name": "yii2-community-cms",
+    "description": "A simple CMS with Yii2",
+    "keywords": ["yii2", "cms"],
+    "homepage": "https://github.com/yii2-tools/yii2-community-cms",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pavel Petrov",
+            "email": "itnelo@gmail.com",
+            "homepage": "https://ppetrov.it",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "2.0.8",
+        "yiisoft/yii2-bootstrap": "*",
+        "yiisoft/yii2-jui": "~2.0",
+        "yiisoft/yii2-swiftmailer": "*",
+        "yiisoft/yii2-authclient": "~2.0",
+        "yiisoft/yii2-redis": "^2.0",
+        "yiisoft/yii2-twig": "~2.0.0",
+        "yii2-tools/yii2-base": "^1.0.4",
+        "yii2-tools/yii2-crud": "~1.0",
+        "yii2-tools/yii2-secure-ar": "~1.0",
+        "yii2-tools/yii2-active-params": "~1.0",
+        "yii2-tools/yii2-breadcrumbs-filter": "~1.0",
+        "almasaeed2010/adminlte": "~2.0",
+        "dmstr/yii2-adminlte-asset": "2.*",
+        "kartik-v/yii2-krajee-base": "^1.8",
+        "kartik-v/yii2-widgets": "^3.4",
+        "kartik-v/yii2-sortable": "^1.0",
+        "kartik-v/yii2-grid": "^3.1",
+        "2amigos/yii2-file-upload-widget": "~1.0",
+        "2amigos/yii2-ckeditor-widget" : "~1.0",
+        "pear/archive_tar": "^1.4",
+        "wapmorgan/unified-archive": "0.0.*",
+        "soundasleep/html2text": "~0.2",
+        "tinymce/tinymce": "4.0.11"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.0",
+        "yiisoft/yii2-gii": "*",
+        "yiisoft/yii2-faker": "*",
+        "yiisoft/yii2-apidoc": "~2.0",
+        "yiisoft/yii2-codeception": "*",
+        "codeception/codeception": "2.1.9",
+        "codeception/specify": "*",
+        "codeception/verify": "*",
+        "codeception/c3": "*",
+        "se/selenium-server-standalone": "^2.52",
+        "packagist/closurecompiler-bin": "^2015.05",
+        "packagist/yuicompressor-bin": "~2.0"
+    },
+    "config": {
+        "vendor-dir" : "default_site/vendor",
+        "process-timeout": 1800
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject"
+        ]
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "runtime": "0775",
+                    "web/assets": "0775",
+                    "yii": "0775"
+                }
+            ],
+            "generateCookieValidationKey": [
+                "config/default/web.php"
+            ]
+        },
+        "asset-installer-paths": {
+            "npm-asset-library": "default_site/vendor/npm",
+            "bower-asset-library": "default_site/vendor/bower"
+        },
+        "branch-alias": {
+            "dev-master": "2.0-dev"
+        }
+    }
+}

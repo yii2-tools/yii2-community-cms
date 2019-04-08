@@ -1,0 +1,15 @@
+
+.forum-stats .info-box {
+    min-height: 55px;
+}
+
+.forum-stats .info-box-icon {
+    font-size: 20px;
+    height: 55px;
+    width: 55px;
+    line-height: 55px;
+}
+
+.forum-stats .info-box-content {
+    margin-left: 55px;
+}

@@ -1,0 +1,71 @@
+<?php
+
+/**
+ * Author: Pavel Petrov <itnelo@gmail.com>
+ * Date: 21.03.16 17:41
+ */
+
+return [
+    'Forum' => 'Форум',
+    'Forum active' => 'Форум активен',
+    'Sections' => 'Разделы',
+    'Section' => 'Раздел',
+    'Sections count' => 'Количество разделов',
+    'Subforums' => 'Подфорумы',
+    'Subforum' => 'Подфорум',
+    'Subforums count' => 'Количество подфорумов',
+    'Topics' => 'Темы',
+    'topics' => 'Тем',
+    'Topic' => 'Тема',
+    'Topics count' => 'Количество тем',
+    'Posts' => 'Сообщения',
+    'posts' => 'Сообщений',
+    'Post' => 'Сообщение',
+    'Posts count' => 'Количество сообщений',
+    'views' => 'Просмотры',
+    // title
+    'Create topic' => 'Создать новую тему',
+    'Edit topic' => 'Редактировать тему',
+    'Edit post' => 'Редактировать сообщение',
+    // fields.
+    'Section ID' => 'Идентификатор раздела',
+    'Subforum ID' => 'Идентификатор подфорума',
+    'Topic ID' => 'Идентификатор темы',
+    'Last Post ID' => 'Идентификатор последнего сообщения',
+    'Is First' => 'Первое сообщение',
+    'Is Closed' => 'Закрыта',
+    'Is Fixed' => 'Зафиксирована',
+    'Views' => 'Просмотры',
+    // Pages.
+    'Forum main page' => 'Главная страница форума',
+    'Forum section page' => 'Cтраница раздела форума',
+    'Forum subforum page' => 'Cтраница подфорума',
+    'Forum topic page' => 'Cтраница темы форума',
+    'Forum topic create page' => 'Страница создания новой темы',
+    'Forum topic update page' => 'Страница редактирования темы',
+    'Forum post update page' => 'Страница обновления сообщения форума',
+    // templates
+    'Forum is empty' => 'Форум пуст',
+    'No subforums' => 'Нет подфорумов',
+    'No topics' => 'Нет тем',
+    'No posts' => 'Нет сообщений',
+    "Section doesn't exists or access has been denied" => "Раздел не существует или доступ к нему ограничен",
+    "Subforum doesn't exists or access has been denied" => "Подфорум не существует или доступ к нему ограничен",
+    "Topic doesn't exists or access has been denied" => "Тема не существует или доступ к ней ограничен",
+    "Post doesn't exists or access has been denied" => "Сообщение не существует или доступ к нему ограничен",
+    'New topic' => 'Новая тема',
+    'Delete topic' => 'Удалить тему',
+    'Statistics' => 'Статистика',
+    'Online ({guests}, {users})' => 'Онлайн ({guests}, {users})',
+    '{guests, plural, =0{no guests} =1{one guest} other{# guests}}' => '{guests, plural, =0{нет гостей} =1{1 гость} one{# гость} few{# гостя} many{# гостей} other{# гостя}}',
+    '{users, plural, =0{no users} =1{one user} other{# users}}' => '{users, plural, =0{нет пользователей} =1{1 пользователь} one{# пользователь} few{# пользователя} many{# пользователей} other{# пользователя}}',
+    '{users, plural, =0{No registered users} =1{One registered user} other{# registered users}}' => '{users, plural, =0{Нет зарегистрированных пользователей} =1{Один зарегистрированный пользователь} one{Зарегистрирован # пользователь} few{Зарегистрировано # пользователя} many{Зарегистрировано # пользователей} other{Зарегистрировано # пользователя}}',
+    '{topics, plural, =0{No topics} =1{One topic} other{# topics}}' => '{topics, plural, =0{Тем не создано} =1{Одна созданная тема} one{Создана # тема} few{Создано # темы} many{Создано # тем} other{Создано # темы}}',
+    '{topics, plural, =0{No topics} =1{1 topic} other{# topics}}' => '{topics, plural, =0{Нет тем} =1{1 тема} one{# тема} few{# темы} many{# тем} other{# темы}}',
+    '{posts, plural, =0{No posts} =1{One post} other{# posts}}' => '{posts, plural, =0{Сообщений не добавлено} =1{Одно добавленное сообщение} one{Добавлено # сообщение} few{Добавлено # сообщения} many{Добавлено # сообщений} other{Добавлено # сообщения}}',
+    '{posts, plural, =0{No posts} =1{1 post} other{# posts}}' => '{posts, plural, =0{Нет сообщений} =1{1 сообщение} one{# сообщение} few{# сообщения} many{# сообщений} other{# сообщения}}',
+    '{views, plural, =0{No views} =1{1 view} other{# views}}' => '{views, plural, =0{Нет просмотров} =1{1 просмотр} one{# просмотр} few{# просмотра} many{# просмотров} other{# просмотра}}',
+    'New user' => 'Новый',
+    'New user: {username}' => 'Новый пользователь: {username}',
+    'No users online' => 'Нет пользователей онлайн',
+];

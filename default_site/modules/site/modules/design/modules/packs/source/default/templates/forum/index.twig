@@ -1,0 +1,22 @@
+
+{#
+    sections: array of Section objects
+#}
+
+{{ set(this, 'title', t(module('FORUM'), 'Forum')) }}
+
+{% if sections is not empty %}
+    {% for section in sections %}
+        {{ render('forum/section/_block', {'section' : section})|raw }}
+    {% endfor %}
+{% else %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    {{ t(module('FORUM'), "Forum is empty") }}.
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

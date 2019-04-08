@@ -1,0 +1,30 @@
+
+{{ set(this, 'title', t(module('SITE'), 'Main page')) }}
+
+{#
+    Example of containers activation
+
+    {{ void(this.beginBlock('containers')) }}
+        {{ render('_containers')|raw }}
+    {{ void(this.endBlock()) }}
+#}
+
+{% if app.user.identity.isAdmin or app.user.can('NEWS_ACCESS') %}
+<div class="row margin-bottom-15">
+    <div class="col-xs-12">
+        <div class="btn-group pull-right">
+            <a href="{{ url({0: route('SITE_NEWS')}) }}" class="btn btn-default">
+                {{ t(module('NEWS'), 'All news') }}
+            </a>
+
+            {% if app.user.identity.isAdmin or app.user.can('NEWS_ADD') %}
+                <a href="{{ url({0: route('SITE_NEWS_CREATE')}) }}" class="btn btn-success">
+                    <i class="fa fa-plus"></i>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{{ render('news/_list', {'news' : news})|raw }}
+{% endif %}

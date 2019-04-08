@@ -1,0 +1,59 @@
+
+{#
+    subforum.title              Subforum title string
+    subforum.slug               Subforum title converted into link-compatible uri part
+    subforum.description        Subforum description text
+    subforum.topics_num         Number of topics created in this subforum
+    subforum.posts_num          Number of posts created in topics that belongs to this subforum
+    subforum.section            Parent section of this subforum
+#}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-7">
+        <div class="row">
+            <div class="col-xs-12">
+                {{ a(subforum.title, {
+                    0: route('SITE_FORUM_SUBFORUMS_SHOW'),
+                    'section': subforum.section.slug,
+                    'subforum': subforum.slug
+                })|raw }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                {{ subforum.description }}
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden-xs col-sm-2">
+        <div class="pull-right">
+            <div class="row">
+                <div class="col-xs-12 text-nowrap">
+                    <div class="pull-right">
+                        {{ t(module('FORUM'),
+                            '{topics, plural, =0{No topics} =1{1 topic} other{# topics}}',
+                            {'topics': subforum.topics_num})
+                        }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 text-nowrap">
+                    <div class="pull-right">
+                        {{ t(module('FORUM'),
+                            '{posts, plural, =0{No posts} =1{1 post} other{# posts}}',
+                            {'posts': subforum.posts_num})
+                        }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden-xs col-sm-4 col-md-3">
+        {{ render('forum/_last_post', {'post' : subforum.lastPost})|raw }}
+    </div>
+</div>

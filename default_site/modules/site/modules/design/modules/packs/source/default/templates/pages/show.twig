@@ -1,0 +1,25 @@
+
+{#
+    title: page title
+    content: page html code
+#}
+
+{{ set(this, 'title', title) }}
+
+{#
+    Example of containers activation
+
+    {{ void(this.beginBlock('containers')) }}
+        {{ render('_containers')|raw }}
+    {{ void(this.endBlock()) }}
+#}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{ content|raw }}
+            </div>
+        </div>
+    </div>
+</div>

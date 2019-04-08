@@ -1,0 +1,14 @@
+
+{#
+    app.user.identity               Identity object for current user
+#}
+
+<div class="row">
+    <div class="hidden-xs col-sm-3">
+        {{ render('forum/post/_author', {'author' : author})|raw }}
+    </div>
+
+    <div class="col-xs-12 col-sm-9">
+        {{ FORUM_POST_FORM|raw }}
+    </div>
+</div>

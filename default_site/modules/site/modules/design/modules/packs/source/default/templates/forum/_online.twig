@@ -1,0 +1,46 @@
+
+{#
+    online.guests_num               Number of guests currently online
+    online.users_num                Number of authorized users currently online
+    online.identities               Array of identities (objects) currently online
+#}
+
+<div class="row forum-online margin-top-10">
+    <div class="col-xs-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">
+                    {% set guestsLabel = t(
+                        module('FORUM'),
+                        '{guests, plural, =0{no guests} =1{one guest} other{# guests}}',
+                        {'guests': online['guests_num']})
+                    %}
+
+                    {% set usersLabel = t(
+                        module('FORUM'),
+                        '{users, plural, =0{no users} =1{one user} other{# users}}',
+                        {'users': online['users_num']})
+                    %}
+
+                    {{ t(module('FORUM'), 'Online ({guests}, {users})', {'guests': guestsLabel, 'users': usersLabel}) }}
+                </h3>
+            </div>
+
+            <div class="box-body">
+                {% if online['identities'] is not empty %}
+                    {% set identitiesNum = online['identities']|length %}
+
+                    {% for identity in online['identities'] %}
+                        {{- a(identity.username,
+                            {0: route('SITE_USERS_PROFILE_SHOW'), 'username': identity.username})|raw
+                        }}
+
+                        {%- set identitiesNum = identitiesNum - 1 %} {%- if identitiesNum > 0 %}, {%- endif %}
+                    {% endfor %}
+                {% else %}
+                    {{ t(module('FORUM'), "No users online") }}.
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+
+<div class="row news-block">
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="pull-left">
+                    <h4 class="title">
+                        {% if active %}
+                            {{ newsRecord.title }}
+                        {% else %}
+                        <a href="{{ url({0: route('SITE_NEWS_SHOW'), 'id': newsRecord.id, 'slug': newsRecord.slug}) }}">
+                            {{ newsRecord.title }}
+                        </a>
+                        {% endif %}
+                    </h4>
+                </div>
+
+                <div class="pull-right">
+                    <div class="btn-group">
+                        {% if app.user.identity.isAdmin or app.user.can('NEWS_UPDATE', {'entity': newsRecord}) %}
+                        <a href="{{ url({0: route('SITE_NEWS_UPDATE'), 'id': newsRecord.id}) }}" class="btn btn-default btn-xs">
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        {% endif %}
+
+                        {% if app.user.identity.isAdmin or app.user.can('NEWS_DELETE', {'entity': newsRecord}) %}
+                        <a href="{{ url({0: route('SITE_NEWS_DELETE'), 'id': newsRecord.id}) }}" class="btn btn-default btn-xs" data-method="post" data-confirm="{{ t('app', 'Are you sure?') }}">
+                            <i class="fa fa-remove"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    <a href="#n{{ newsRecord.id }}" class="margin-left-5">#{{ newsRecord.id }}</a>
+                    <a name="n{{ newsRecord.id }}" class="anchor-top-100"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row margin-top-10">
+            <div class="col-xs-12">
+                {{ newsRecord.content|raw }}
+            </div>
+        </div>
+
+        <div class="row margin-top-10">
+            <div class="col-xs-6">
+                {{ t(module('NEWS'), 'Posted by') }}
+
+                {% if newsRecord.author is not empty %}
+                    <a href="{{ url({0: route('SITE_USERS_PROFILE_SHOW'), 'username': newsRecord.author.username}) }}" title="{{ newsRecord.author.profile.fullName }}">
+                        {{ newsRecord.author.username }}
+                    </a>
+                {% else %}
+                    {{ t(module('USERS'), 'Guest') }}
+                {% endif %}
+            </div>
+
+            <div class="col-xs-6">
+                <div class="pull-right">
+                    {{ newsRecord.date }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+
+{#
+    author.profile.fullName             User's name and login
+    author.username                     User's login
+    author.roles                        User's assigned groups
+    role.name                           Name of group
+#}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                {% if author is not empty %}
+                    {{ a(author.profile.fullName,
+                        {0: route('SITE_USERS_PROFILE_SHOW'), 'username': author.username})|raw
+                    }}
+                {% else %}
+                    {{ t(module('USERS'), 'Guest') }}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row margin-top-10">
+            <div class="col-sm-12 text-center">
+                {% if author.profile.image_url is not empty %}
+                <img src="{{ author.profile.image_url }}" class="img-circle post-author-image" />
+                {% else %}
+                <canvas width="150" height="150" data-jdenticon-hash="{{ md5(author.profile.fullName) }}" class="post-author-image"></canvas>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if author.roles is not empty %}
+        <div class="row margin-top-10">
+            <div class="col-sm-12 text-center">
+                {% for role in author.roles %}
+                <div class="row">
+                    <div class="col-xs-12">
+                        {{ role.name }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row margin-top-10 hidden-sm hidden-md hidden-lg"></div>
+    </div>
+</div>

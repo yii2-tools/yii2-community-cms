@@ -1,0 +1,24 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <span id="profile-image-block" style="display: none">
+                <img src="{{ user.profile.image_url }}"
+                     id="profile-image"
+                     class="img-rounded{% if user.profile.image_url is empty %} hidden{% endif %}"
+                     alt="{{ user.email }}"
+                     style="max-width: 60px;" />
+            </span>
+
+            {% if user.profile.name is not empty %}
+                {{ user.profile.name }}
+            {% endif %}
+
+            {{ user.username }}
+        </h3>
+    </div>
+
+    <div class="panel-body">
+        {{ USER_SETTINGS_MENU|raw }}
+    </div>
+</div>
