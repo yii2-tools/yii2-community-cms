@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'class' => 'yii\db\Connection',
+    'class'        => 'yii\db\Connection',
     'commandClass' => 'yii\tools\components\DbCommand',
-    'dsn' => 'mysql:host=localhost;dbname=',
-    'username' => '',
-    'password' => '',
-    'charset' => 'utf8',
+    'dsn'          => 'mysql:host=localhost;dbname=',
+    'username'     => '',
+    'password'     => '',
+    'charset'      => 'utf8',
 ];
